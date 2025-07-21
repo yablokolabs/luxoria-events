@@ -58,6 +58,9 @@ document.addEventListener('DOMContentLoaded', function() {
       <!-- Header -->
       <header class="header">
         <div class="logo">
+          <div class="logo-container">
+            <img src="logo.png" alt="Luxoria Events Logo" class="logo-img">
+          </div>
           <h1>Luxoria Events</h1>
           <p class="tagline">Bangalore's Premier Event Destination</p>
         </div>

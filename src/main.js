@@ -17,7 +17,7 @@ function updateCountdown() {
   document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
 
   if (distance < 0) {
-    document.querySelector('.countdown').innerHTML = '<h2>We\'re Live!</h2>';
+    document.querySelector('.countdown').innerHTML = '<h2>Coming soon!</h2>';
   }
 }
 
@@ -134,11 +134,14 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="location">
           <p>📍 Bangalore, Karnataka, India</p>
         </div>
+        <!-- Social links will be added later -->
+        <!--
         <div class="social-links">
           <a href="#" class="social-link">Facebook</a>
           <a href="#" class="social-link">Instagram</a>
           <a href="#" class="social-link">LinkedIn</a>
         </div>
+        -->
       </footer>
     </div>
   `;

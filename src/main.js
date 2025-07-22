@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="subscription">
             <h3>Be the First to Know</h3>
             <p>Get notified when we launch and receive exclusive early access offers</p>
-            <form class="email-form" id="emailForm">
+            <form class="email-form" id="emailForm" action="https://formspree.io/f/xjkoybwo" method="POST">
               <input 
                 type="email" 
                 id="email" 

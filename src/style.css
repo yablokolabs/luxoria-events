@@ -7,13 +7,27 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%), url('/Luminous.png') center/60%;
-  background-blend-mode: overlay;
+  background: #0a0a0a;
   color: #f8f9fa;
   min-height: 100vh;
   overflow-x: hidden;
   line-height: 1.7;
   font-weight: 300;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/Luminous.png') center/50%;
+  background-blend-mode: screen;
+  opacity: 0.2;
+  z-index: -1;
+  pointer-events: none;
 }
 
 /* Container */

@@ -2,40 +2,68 @@ import './style.css'
 
 // Countdown Timer
 function updateCountdown() {
-  const launchDate = new Date('2024-06-01T00:00:00').getTime();
+  const daysEl = document.getElementById('days');
+  const hoursEl = document.getElementById('hours');
+  const minutesEl = document.getElementById('minutes');
+  const secondsEl = document.getElementById('seconds');
+  
+  // Only proceed if elements exist
+  if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
+  
+  const launchDate = new Date('2024-12-31T00:00:00').getTime();
   const now = new Date().getTime();
   const distance = launchDate - now;
 
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  const days = Math.max(0, Math.floor(distance / (1000 * 60 * 60 * 24)));
+  const hours = Math.max(0, Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+  const minutes = Math.max(0, Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
+  const seconds = Math.max(0, Math.floor((distance % (1000 * 60)) / 1000));
 
-  document.getElementById('days').textContent = days.toString().padStart(2, '0');
-  document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-  document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-  document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+  daysEl.textContent = days.toString().padStart(2, '0');
+  hoursEl.textContent = hours.toString().padStart(2, '0');
+  minutesEl.textContent = minutes.toString().padStart(2, '0');
+  secondsEl.textContent = seconds.toString().padStart(2, '0');
 
   if (distance < 0) {
-    document.querySelector('.countdown').innerHTML = '<h2>Coming soon!</h2>';
+    const countdownEl = document.querySelector('.countdown');
+    if (countdownEl) countdownEl.innerHTML = '<h2>Coming soon!</h2>';
+    return; // Stop the interval when countdown is over
   }
 }
 
 // Email subscription
-function handleEmailSubmission(e) {
+async function handleEmailSubmission(e) {
   e.preventDefault();
-  const email = document.getElementById('email').value;
-  const button = document.querySelector('.notify-btn');
+  const form = e.target;
+  const button = form.querySelector('button[type="submit"]');
   const originalText = button.textContent;
   
-  button.textContent = 'Thank you!';
-  button.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+    
+    if (response.ok) {
+      button.textContent = 'Thank you!';
+      button.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+      form.reset();
+    } else {
+      button.textContent = 'Error, try again';
+      button.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+    }
+  } catch (error) {
+    button.textContent = 'Error, try again';
+    button.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+  }
   
   setTimeout(() => {
     button.textContent = originalText;
     button.style.background = '';
-    document.getElementById('email').value = '';
-  }, 2000);
+  }, 3000);
 }
 
 // Floating animation for decorative elements
@@ -48,6 +76,15 @@ function createFloatingAnimation() {
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
+  // Add form submission handler
+  const emailForm = document.getElementById('emailForm');
+  if (emailForm) {
+    emailForm.addEventListener('submit', handleEmailSubmission);
+  }
+  
+  // Start countdown timer after DOM is loaded
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
   // Set up the main content
   document.querySelector('#app').innerHTML = `
     <div class="container">
@@ -102,6 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <form class="email-form" id="emailForm" action="https://formspree.io/f/xjkoybwo" method="POST">
               <input 
                 type="email" 
+                name="email"  
                 id="email" 
                 placeholder="Enter your email address" 
                 required

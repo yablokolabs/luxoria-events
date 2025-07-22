@@ -8,7 +8,7 @@
 body {
   font-family: 'Montserrat', sans-serif;
   background: #0a0a0a;
-  color: #f8f9fa;
+  color: #c8a2c8; /* Soft lilac color */
   min-height: 100vh;
   overflow-x: hidden;
   line-height: 1.7;
@@ -181,7 +181,7 @@ h1, h2, h3, h4 {
 
 .coming-soon-title {
   font-size: clamp(2.2rem, 5vw, 4rem);
-  font-weight: 700;
+  font-weight: 400;
   margin: 2rem 0 1.5rem;
   color: #ffffff;
   line-height: 1.1;
@@ -196,7 +196,7 @@ h1, h2, h3, h4 {
 
 .description {
   font-size: 1.25rem;
-  color: #e2e8f0;
+  color: #c8a2c8; /* Matching the lilac color from body */
   margin: 0 auto 3rem;
   line-height: 1.8;
   font-weight: 400;
@@ -256,7 +256,7 @@ h1, h2, h3, h4 {
 .subscription h3 {
   font-size: 2rem;
   margin: 2rem 0 1rem;
-  color: #ffffff;
+  color: #c8a2c8; /* Lilac color to match theme */
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   position: relative;
   display: inline-block;
@@ -276,7 +276,7 @@ h1, h2, h3, h4 {
 }
 
 .subscription p {
-  color: #e2e8f0;
+  color: #c8a2c8; /* Lilac color to match theme */
   margin: 0 auto 2rem;
   font-size: 1.1rem;
   max-width: 500px;
@@ -368,13 +368,14 @@ h1, h2, h3, h4 {
   font-family: 'Playfair Display', serif;
   font-size: 1.3rem;
   margin-bottom: 1rem;
-  color: #f8fafc;
+  color: #c8a2c8; /* Lilac color to match theme */
 }
 
 .feature-card p {
-  color: #cbd5e1;
+  color: #c8a2c8; /* Lilac color to match theme */
   font-size: 0.95rem;
   line-height: 1.6;
+  opacity: 0.9; /* Slightly transparent for better readability */
 }
 
 /* Footer */

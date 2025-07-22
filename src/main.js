@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="features-preview">
           <div class="feature-card">
             <div class="feature-icon">🏛️</div>
-            <h4>Luxury Banquet Halls</h4>
+            <h4>Luxury Banquet Hall</h4>
             <p>Elegant spaces designed for your most important celebrations</p>
           </div>
           <div class="feature-card">

@@ -26,7 +26,7 @@ function updateCountdown() {
 
   if (distance < 0) {
     const countdownEl = document.querySelector('.countdown');
-    if (countdownEl) countdownEl.innerHTML = '<h2>Coming soon!</h2>';
+    if (countdownEl) countdownEl.innerHTML = '<h2>Coming soon...</h2>';
     return; // Stop the interval when countdown is over
   }
 }
@@ -98,15 +98,14 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="logo-container">
             <img src="logo.png" alt="Luxoria Events Logo" class="logo-img">
           </div>
-          <h1>Luxoria Events</h1>
-          <p class="tagline">Bangalore's Premier Event Destination</p>
+          <h1>Event Agency & Banquet Hall</h1>
+          <p class="tagline">Enjoy your special moments!</p>
         </div>
       </header>
 
       <!-- Main Content -->
       <main class="main-content">
         <div class="hero-section">
-          <h2 class="coming-soon-title">Something Extraordinary is Coming</h2>
           <p class="description">
             We're crafting the most luxurious banquet hall and events management experience in Bangalore. 
             From intimate celebrations to grand weddings, we're preparing to make your special moments unforgettable.
